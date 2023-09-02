@@ -9,24 +9,19 @@ const newEntry = async (req, res) => {
     } catch (err) {
         // Client will check for non-2xx status code
         // 400 = Bad Request
-        res.status(400).json(err);
+        res.status(400).json({ msg: err.message, reason: 'Bad Credentials' });
     }
 };
 
-// const login = async (req, res) => {
-//     try {
-//         // Find the user by their email
-//         const user = await User.findOne({ email: req.body.email });
-
-//         const isMatch = await bcrypt.compare(req.body.password, user.password);
-
-//         if (!isMatch) throw new Error();
-
-//         res.status(200).json(createJWT(user));
-//     } catch (err) {
-//         res.status(400).json({ msg: err.message, reason: 'Bad Credentials' });
-//     }
-// };
+const getToDoList = async (req, res) => {
+    try {
+        // Find the user by their email
+        const todoList = await ToDo.find({});
+        res.status(200).json(todoList);
+    } catch (err) {
+        res.status(400).json({ msg: err.message, reason: 'Bad Credentials' });
+    }
+};
 
 // function createJWT(user) {
 //     return jwt.sign(
@@ -44,6 +39,6 @@ const newEntry = async (req, res) => {
 
 module.exports = {
     newEntry,
-    // login,
+    getToDoList
     // checkToken,
 };

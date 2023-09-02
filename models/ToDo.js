@@ -5,17 +5,11 @@ const Schema = mongoose.Schema;
 const todoSchema = new Schema(
     {
         name: { type: String, required: true },
-        title: {
-        type: String,
-        trim: true,
-        required: true,
-        },
-        details: {
-        type: String,
-        },
+        title: {type: String, required: true},
+        details: {type: String},
         date: { type: Date, required: true },
     }
 );
 
 
-module.exports = mongoose.model('ToDo', todoSchema);0
+module.exports = mongoose.model('ToDo', todoSchema);

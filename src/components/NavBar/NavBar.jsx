@@ -16,6 +16,8 @@ export default function NavBar({ user, setUser }) {
         &nbsp; | &nbsp;
         <Link to='/todo'>To do list</Link>
         &nbsp; | &nbsp;
+        <Link to='/todo/add'>To do list add</Link>
+        &nbsp; | &nbsp;
         <Link to='/orders/history'>Order History</Link>
         &nbsp; | &nbsp;
         <Link to='/orders/new'>New Order</Link>

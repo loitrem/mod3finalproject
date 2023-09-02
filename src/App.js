@@ -12,7 +12,8 @@ import OrderHistoryPage from './pages/OrderHistory/OrderHistoryPage'
 import NavBar from './components/NavBar/NavBar';
 import Index from './pages/Index/Index'
 import Chat from './pages/Chat/Chat';
-import ToDo from './pages/ToDo/ToDo'
+import ToDoIndex from './pages/ToDo/Index'
+import ToDoAdd from './pages/ToDo/ToDoAdd'
 
 //import css
 import './App.css';
@@ -36,7 +37,8 @@ function App() {
           <NavBar user={user} setUser={setUser}/>
           <Routes>
             <Route path="/" element={<Index />}/>
-            <Route path="/todo" element={<ToDo />}/>
+            <Route path="/todo" element={<ToDoIndex />}/>
+            <Route path="/todo/add" element={<ToDoAdd />}/>
             <Route path="/chat" element={<Chat />}/>
             <Route path="/orders/new/" element={<NewOrderPage />}/>
             <Route path="/orders/history/" element={<OrderHistoryPage  user={user}/>}/>
