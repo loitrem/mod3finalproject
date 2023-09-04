@@ -10,7 +10,10 @@ router.post('/newentry', todoCtrl.newEntry);
 // GET /api/todo/getall
 router.get('/getall', todoCtrl.getToDoList);
 
-// // GET /api/users/check-token
-// router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
+router.post('/edit', todoCtrl.editToDoList);
+
+router.post('/getbyid', todoCtrl.editToDoList);
+
+router.delete('/remove', todoCtrl.remove);
 
 module.exports = router;

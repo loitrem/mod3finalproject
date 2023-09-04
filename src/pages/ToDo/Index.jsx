@@ -1,10 +1,11 @@
-import React, {useState, useEffect}from 'react'
-import {getToDoList} from '../../utilities/todo-service'
-import { useNavigate } from 'react-router-dom'
+import React, {useState, useEffect, useContext}from 'react'
+import {getToDoList, remove} from '../../utilities/todo-service'
+import { useNavigate, useParams  } from 'react-router-dom'
+
 
 function Index() {
 
-    const[todo,setTodo]=useState([])
+    const[todo,setToDo]=useState([])
 
     let data = null
 
@@ -16,7 +17,7 @@ function Index() {
             results.map((current)=>{
                 // if (first){
                 todoList.push(current)
-                setTodo(todoList.slice(0,todoList.length).reverse())
+                setToDo(todoList.slice(0,todoList.length).reverse())
                 console.log('do i ever go');
             })
         })
@@ -24,21 +25,6 @@ function Index() {
     },[])
 
         const navigate = useNavigate();
-  
-        const handleSubmit = async(e) => {
-            console.log('todo',todo);
-            const currentDate = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) ; 
-            console.log(currentDate);
-            // Prevent form from being submitted to the server
-            e.preventDefault();
-    
-            try{ 
-                const data = {...todo}
-            } catch (err){
-                console.log(err);
-            }
-            navigate('/todo')
-        }
 
     return (
         <div className='todoListWrapper'>
@@ -58,10 +44,16 @@ function Index() {
                                 </div>
                                 <div className="todoListButton">
                                     <div className="todoLeftButton">
-                                        <button className='todoListBtn' value={current._id}>Edit</button>
+                                        <button className='todoListBtn' name='editId' onClick={()=>{
+                                            
+                                            // handleSubmit(current._id)
+                                            navigate(`/todo/edit/${current._id}`)
+                                        }}>Edit</button>
                                     </div>
                                     <div className="todoRightButton">
-                                        <button className='todoListBtn'>Delete</button>
+                                        <button className='todoListBtn' name='deleteId' onClick={()=>{
+                                            remove(current._id)
+                                        }}>Delete</button>
                                     </div>
                                 </div>
                             </div>

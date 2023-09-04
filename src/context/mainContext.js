@@ -7,15 +7,15 @@ export const AppContext=createContext();
     const AppContextProvider = (props) => {
 
     //sets the userState (creating state)
-    const [todo,setTodo] = useState(null);
+    const [id,setId] = useState('');
 
 
     return (
             //gives state access to entire app
             <AppContext.Provider value={{
                 // add the use states to the provider
-            todo,
-            setTodo
+            id,
+            setId
 
             }}> 
             {props.children}

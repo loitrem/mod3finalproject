@@ -10,8 +10,18 @@ export async function getToDoList(data){
     return entry;
 }
 
-// export async function editToDoList(data){
-//     const entry = await todoAPI.editToDoList(data);
-//     return entry;
-// }
+export async function editToDoList(data){
+    const entry = await todoAPI.editToDoList(data);
+    return entry;
+}
+
+export async function getToDoById(id){
+    const entry = await todoAPI.getToDoById(id);
+    return entry;
+}
+
+export async function remove(id){
+    const entry = await todoAPI.remove(id);
+    return entry;
+}
 
