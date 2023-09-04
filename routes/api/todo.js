@@ -14,6 +14,6 @@ router.post('/edit', todoCtrl.editToDoList);
 
 router.post('/getbyid', todoCtrl.editToDoList);
 
-router.delete('/remove', todoCtrl.remove);
+router.post('/remove', todoCtrl.deleteItem);
 
 module.exports = router;

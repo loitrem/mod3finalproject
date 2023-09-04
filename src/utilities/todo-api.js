@@ -18,6 +18,6 @@ export function getToDoById(id){
     return sendRequest(`${BASE_URL}/getbyid`, 'POST', id)
 }
 
-export function remove(id){
+export function deleteItem(id){
     return sendRequest(`${BASE_URL}/remove`, 'POST', id)
 }

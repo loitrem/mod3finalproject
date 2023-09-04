@@ -38,7 +38,7 @@ const editToDoList = async (req, res) => {
 
 const getToDoById = async (req, res) => {
     try {
-       
+
         const data = await ToDo.findById(req.body.id);
 
         res.json(data);
@@ -49,10 +49,10 @@ const getToDoById = async (req, res) => {
     }
 };
 
-const remove = async (req, res) => {
+const deleteItem = async (req, res) => {
     try {
     
-        const data = await ToDo.findByIdAndDelete(req.body.id);
+        await ToDo.findByIdAndDelete(req.body.id);
 
     } catch (err) {
         // Client will check for non-2xx status code
@@ -66,5 +66,5 @@ module.exports = {
     getToDoList,
     editToDoList,
     getToDoById,
-    remove
+    deleteItem
 };

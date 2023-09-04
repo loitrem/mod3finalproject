@@ -20,8 +20,8 @@ export async function getToDoById(id){
     return entry;
 }
 
-export async function remove(id){
-    const entry = await todoAPI.remove(id);
+export async function deleteItem(id){
+    const entry = await todoAPI.deleteItem(id);
     return entry;
 }
 

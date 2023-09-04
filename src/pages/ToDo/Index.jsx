@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext}from 'react'
-import {getToDoList, remove} from '../../utilities/todo-service'
+import {getToDoList, deleteItem} from '../../utilities/todo-service'
 import { useNavigate, useParams  } from 'react-router-dom'
 
 
@@ -44,15 +44,16 @@ function Index() {
                                 </div>
                                 <div className="todoListButton">
                                     <div className="todoLeftButton">
-                                        <button className='todoListBtn' name='editId' onClick={()=>{
+                                        <button className='todoListBtn' onClick={()=>{
                                             
                                             // handleSubmit(current._id)
                                             navigate(`/todo/edit/${current._id}`)
                                         }}>Edit</button>
                                     </div>
                                     <div className="todoRightButton">
-                                        <button className='todoListBtn' name='deleteId' onClick={()=>{
-                                            remove(current._id)
+                                        <button className='todoListBtn' onClick={()=>{
+                                            navigate(`/todo`)
+                                            deleteItem(current._id)
                                         }}>Delete</button>
                                     </div>
                                 </div>
