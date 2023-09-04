@@ -466,17 +466,21 @@ header .calendar-current-date {
   border-top: 2px solid black;
   border-left: 2px solid black;
   border-right: 2px solid black;
+  
 }
 
 .todoListCell {
   width: 100%;
   cursor: pointer;
+  /* max-height: 150px; */
+  /* overflow: hidden;
+  overflow-y: inherit; */
 }
 
 
 .hideWrapper {
-  overflow: hidden;
-  height: 0;
+  /* overflow: hidden; */
+  /* height: 0; */
   transition: transform ease-in-out height .5s;
 }
 
@@ -484,7 +488,7 @@ header .calendar-current-date {
   visibility: visible;
   overflow: hidden;
   height: 100%;
-  max-height: 500px;
+  /* max-height: 500px; */
 }
 
 .todoListCell:hover {

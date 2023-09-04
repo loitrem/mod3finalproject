@@ -1,44 +1,44 @@
 import React, {useState, useEffect}from 'react'
 import {getToDoList} from '../../utilities/todo-service'
+import { useNavigate } from 'react-router-dom'
 
 function Index() {
 
     const[todo,setTodo]=useState([])
-    const[cell, setCell]=useState('show')
-    const [hover, setHover] = useState(false);
 
-    let styleChange;
-
-    const handleMouseEnter = () => {
-        setHover(true);
-        styleChange='red'
-        console.log('EARLIER STYLE', styleChange);
-    };
-  
-    const handleMouseLeave = () => {
-      setHover(false);
-    };
-
-    let first = false
     let data = null
-   
+
     useEffect(()=>{
         let todoList = [] 
-        setTodo()
         data = getToDoList()
+        console.log('CHECK ME', data);
         data.then(results =>{
             results.map((current)=>{
                 // if (first){
-                    todoList.push(current)
-                console.log('+++++++++++++++',todoList.slice(0,todoList.length).reverse());
+                todoList.push(current)
                 setTodo(todoList.slice(0,todoList.length).reverse())
                 console.log('do i ever go');
-
             })
         })
         
-    },[hover])
+    },[])
 
+        const navigate = useNavigate();
+  
+        const handleSubmit = async(e) => {
+            console.log('todo',todo);
+            const currentDate = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) ; 
+            console.log(currentDate);
+            // Prevent form from being submitted to the server
+            e.preventDefault();
+    
+            try{ 
+                const data = {...todo}
+            } catch (err){
+                console.log(err);
+            }
+            navigate('/todo')
+        }
 
     return (
         <div className='todoListWrapper'>
@@ -52,20 +52,19 @@ function Index() {
                                 <div className="titleDate">{new Date(Date.parse(current.date)).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})}</div>
                             </div>
                                 <div className='hideWrapper'>
-                                    {console.log('STYLE HERE',styleChange)}
+
                                     <div className="todoListDetails">
                                         {current.details}
                                 </div>
                                 <div className="todoListButton">
                                     <div className="todoLeftButton">
-                                        <button className='todoListBtn'>Edit</button>
+                                        <button className='todoListBtn' value={current._id}>Edit</button>
                                     </div>
                                     <div className="todoRightButton">
                                         <button className='todoListBtn'>Delete</button>
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>    
                     )
                 }):''}

@@ -18,7 +18,8 @@ function SignUpForm({ setUser }) {
     const handleSubmit = async(e) => {
         e.preventDefault(); //prevents the default page refresh upon submit of data
         try{
-            const formData = {...state};
+            //usertypes USER, AUTH_USER, ADMIN_USER
+            const formData = {...state, userType: 'USER'};
             delete formData.error;
             delete formData.confirm;
             // const {name, email, password} = state

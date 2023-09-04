@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import * as todoService from '../../utilities/todo-service';
 import { getToken } from '../../utilities/users-service';
 
 
 function ToDoAdd() {
+
+    const navigate = useNavigate();
 
     const [todo, setToDo]=useState('')
 
@@ -33,6 +36,7 @@ function ToDoAdd() {
         } catch (err){
             console.log(err);
         }
+        navigate('/todo')
     }
 
     return (
