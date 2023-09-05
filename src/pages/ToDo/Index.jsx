@@ -14,6 +14,7 @@ function Index() {
         let todoList = [] 
         data = getToDoList()
         console.log('CHECK ME', data);
+        // setToDo(data)
         data.then(results =>{
             results.map((current)=>{
                 // if (first){
@@ -38,6 +39,7 @@ function Index() {
             <h1>To Do List</h1>
             <div className="todoList">
                 {todo?todo.map((current, i)=>{
+                    // console.log('CURRENT DATE TEST', new Date(Date.parse(current.date)).toDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}));
                     return (
                         <div key={i} className="todoListCell">
                             <div className="todoListTitle">

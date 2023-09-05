@@ -1,25 +1,26 @@
-import sendRequest from './send-request';
+import * as sendRequest from './send-request';
+import axios from 'axios';
 
 const BASE_URL = '/api/todo';
 
 export function newEntry(data){
-    return sendRequest(`${BASE_URL}/newentry`, 'POST', data)
+    return sendRequest.sendPostRequest(`${BASE_URL}/newentry`, data)
 }
 
-export function getToDoList(){
-    return sendRequest(`${BASE_URL}/getall`, 'GET')
+export async function getToDoList(){
+    return sendRequest.sendGetRequest(`${BASE_URL}/getall`)
 }
 
 export function editToDoList(data){
     console.log('api!!',data);
-    return sendRequest(`${BASE_URL}/edit`, 'POST', data)
+    return sendRequest.sendPostRequest(`${BASE_URL}/edit`, data)
 }
 
 export function getToDoById(id){
-    return sendRequest(`${BASE_URL}/getbyid`, 'POST', id)
+    return sendRequest.sendPostRequest(`${BASE_URL}/getbyid`, id)
 }
 
 export function deleteItem(id){
     console.log('API page');
-    return sendRequest(`${BASE_URL}/remove`, 'POST', id)
+    return sendRequest.sendPostRequest(`${BASE_URL}/remove`, id)
 }
