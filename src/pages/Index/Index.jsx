@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import Calendar from 'react-calendar'; 
 import { findByDate } from '../../utilities/calendar-service';
 import { getUser } from '../../utilities/users-service';
+import { useNavigate } from 'react-router-dom'
 
 function Index() {
     const [date, setDate] = useState(new Date())
@@ -9,43 +10,48 @@ function Index() {
     // const [time,setTime]=useState('')
     // const [details,setDetals]=useState('')
     const [info,setInfo]=useState('')
-    let calendarData
-    const handleChange = async(e,data) =>{
-        e.preventDefault();
-        calendarData = await findByDate(data);
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        handleChange()
+    },[date])
+
+
+    const handleChange = async() =>{
+
+        setInfo(await findByDate({date: date.toDateString()}))
+        // console.log('DBINFO',dbInfo);
+        
     }
+    console.log('DBINFO222',info);
 
-    // const handleSubmit = async(e) => {
-    //     const user = getUser()
-    //     console.log(user);
-    //     e.preventDefault()
-    //     const data = {
-    //         name: user,
-    //         title: info.title,
-    //         time: info.time,
-    //         details: info.details,
-    //         date: date.toDateString(),
-    //     }
-    //     console.log(data);
-    //     await newEntry(data)
 
-    // }
-    // console.log('TIME',time);
-    // new Date(Date.parse(current.date)).toDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
     return (
         <div>
             <h1 className="header">React Calendar</h1>
             <div className="calendar-container">
-                <Calendar onChange={(e)=>{
-                    handleChange(e,date.toDateString())
-                }} value={date}/>
-                {setDate(date)}
+                <Calendar onChange={setDate} value={date}/>
             </div>
             <div className="text-center">
-                <div className="date"><label htmlFor="">date</label>{date.toDateString()}
+                <div className="date"><label htmlFor="">date</label>{date.toDateString()}</div>
                 <br/>
-                {calendarData}
-                </div>
+                <button onClick={()=>{
+                    navigate(`/calendar/add/${date.toDateString()}`)
+                }}>Add Event</button>
+                <br/>
+                {info?info.map((current,i)=>{
+                    console.log('Current DB Info',current);
+                    return(
+                    <div className="display" key={i}>
+                    <div className="title"><label>Title: </label>{current.title}</div> <br/>
+                    <div className="time"><label>Time: </label>{current.time}</div> <br/>
+                    <div className="details"><label>Detais: </label>{current.details}</div>
+                    <button onClick={()=>{
+                    navigate(`/calendar/edit/${current._id}`)
+                }}>Edit Event</button>
+                    </div>
+                    )
+                }):''}
             </div>
         </div>
     )

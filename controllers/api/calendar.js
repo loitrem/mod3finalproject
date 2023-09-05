@@ -29,7 +29,8 @@ const update = async (req, res) => {
 const findByDate = async (req, res) => {
     try {
         // Add user to database
-        const data = await Calendar.findMany(req.body.date);
+        console.log(req.body.date);
+        const data = await Calendar.find({date: req.body.date});
 
         res.json(data);
     } catch (err) {

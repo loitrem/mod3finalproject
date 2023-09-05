@@ -4,9 +4,6 @@ import { getUser } from '../../utilities/users-service';
 
 function CalendarEdit() {
     const [date, setDate] = useState(new Date())
-    // const [title,setTitle]=useState('')
-    // const [time,setTime]=useState('')
-    // const [details,setDetals]=useState('')
     const [info,setInfo]=useState('')
 
     const handleChange = (e) =>{

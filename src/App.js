@@ -16,6 +16,8 @@ import ToDoIndex from './pages/ToDo/Index'
 import ToDoAdd from './pages/ToDo/ToDoAdd'
 import ToDoEdit from './pages/ToDo/ToDoEdit';
 import ToDoDelete from './pages/ToDo/ToDoDelete';
+import CalendarAdd from './pages/Index/CalendarAdd';
+import CalendarEdit from './pages/Index/CalendarEdit';
 
 //import css
 import './App.css';
@@ -39,6 +41,8 @@ function App() {
           <NavBar user={user} setUser={setUser}/>
           <Routes>
             <Route path="/" element={<Index />}/>
+            <Route path="/calendar/add/:date" element={<CalendarAdd />}/>
+            <Route path="/calendar/edit/:id" element={<CalendarEdit />}/>
             <Route path="/todo" element={<ToDoIndex />}/>
             <Route path="/todo/add" element={<ToDoAdd />}/>
             <Route path="/chat" element={<Chat />}/>
