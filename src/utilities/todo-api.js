@@ -1,5 +1,4 @@
 import * as sendRequest from './send-request';
-import axios from 'axios';
 
 const BASE_URL = '/api/todo';
 

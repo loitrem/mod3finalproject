@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Calendar from 'react-calendar'; 
+import { newEntry } from '../../utilities/calendar-service';
 import { getUser } from '../../utilities/users-service';
 
 function Index() {
@@ -13,13 +14,14 @@ function Index() {
         setInfo({...info, [e.target.name]: e.target.value})
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         const user = getUser()
         console.log(user);
         e.preventDefault()
         const data = {...info,
             date: date.toDateString()}
         console.log(data);
+        await newEntry(data)
 
     }
     // console.log('TIME',time);
