@@ -26,8 +26,9 @@ const getToDoList = async (req, res) => {
 const editToDoList = async (req, res) => {
     try {
         // Add user to database
+        console.log('before data',req.body.id,req.body);
         const data = await ToDo.findByIdAndUpdate(req.body.id,req.body);
-
+        console.log('after data', data);
         res.json(data);
     } catch (err) {
         // Client will check for non-2xx status code
@@ -51,9 +52,9 @@ const getToDoById = async (req, res) => {
 
 const deleteItem = async (req, res) => {
     try {
-    
+        console.log('before data',req.body.id);
         await ToDo.findByIdAndDelete(req.body.id);
-
+        console.log(await ToDo.find({}));
     } catch (err) {
         // Client will check for non-2xx status code
         // 400 = Bad Request

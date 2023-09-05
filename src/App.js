@@ -15,6 +15,7 @@ import Chat from './pages/Chat/Chat';
 import ToDoIndex from './pages/ToDo/Index'
 import ToDoAdd from './pages/ToDo/ToDoAdd'
 import ToDoEdit from './pages/ToDo/ToDoEdit';
+import ToDoDelete from './pages/ToDo/ToDoDelete';
 
 //import css
 import './App.css';
@@ -42,6 +43,7 @@ function App() {
             <Route path="/todo/add" element={<ToDoAdd />}/>
             <Route path="/chat" element={<Chat />}/>
             <Route path="/todo/edit/:id" element={<ToDoEdit/>}/>
+            <Route path="/todo/delete/:id" element={<ToDoDelete/>}/>
             <Route path="/orders/new/" element={<NewOrderPage />}/>
             <Route path="/orders/history/" element={<OrderHistoryPage  user={user}/>}/>
           </Routes> 

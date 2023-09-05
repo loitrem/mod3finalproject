@@ -11,6 +11,7 @@ export function getToDoList(){
 }
 
 export function editToDoList(data){
+    console.log('api!!',data);
     return sendRequest(`${BASE_URL}/edit`, 'POST', data)
 }
 
@@ -19,5 +20,6 @@ export function getToDoById(id){
 }
 
 export function deleteItem(id){
+    console.log('API page');
     return sendRequest(`${BASE_URL}/remove`, 'POST', id)
 }

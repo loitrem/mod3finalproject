@@ -12,6 +12,7 @@ export async function getToDoList(data){
 
 export async function editToDoList(data){
     const entry = await todoAPI.editToDoList(data);
+    console.log('services', data);
     return entry;
 }
 
@@ -22,6 +23,7 @@ export async function getToDoById(id){
 
 export async function deleteItem(id){
     const entry = await todoAPI.deleteItem(id);
+    // console.log('service page',id);
     return entry;
 }
 

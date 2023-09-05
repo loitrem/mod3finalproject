@@ -18,10 +18,10 @@ console.log('ID IS = ', id);
         .then(results =>{
             setInfo(results)
             console.log('RESULTS!!!',results);
-                
+                setToDo(results);
             })
-        console.log('RECORD HOPEFULLY', record);
-        setToDo();
+        console.log('RECORD HOPEFULLY', info);
+        
         
     },[])
 
@@ -46,13 +46,14 @@ console.log('ID IS = ', id);
             const token = getToken();
             console.log('TOTO ASGINDGDSSD',e.target.title.value,e.target.details.value);
             const data = {
-            name: token ? JSON.parse(atob(token.split('.')[1])).user.name : null,
-            title: e.target.title.value,
-            details: e.target.details.value,    
-            date: currentDate
+                id: id.id,
+                name: token ? JSON.parse(atob(token.split('.')[1])).user.name : null,
+                title: e.target.title.value,
+                details: e.target.details.value,    
+                date: currentDate 
             }
             console.log('KDJSHFKJSDHFKJSDFHK', data);
-            await todoService.newEntry(data);
+            await todoService.editToDoList(data);
 
         } catch (err){
             console.log(err);

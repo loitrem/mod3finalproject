@@ -1,14 +1,15 @@
 import React, {useState, useEffect, useContext}from 'react'
 import {getToDoList, deleteItem} from '../../utilities/todo-service'
 import { useNavigate, useParams  } from 'react-router-dom'
+import ToDoDelete from './ToDoDelete'
 
 
 function Index() {
 
     const[todo,setToDo]=useState([])
-
+    const navigate = useNavigate();
     let data = null
-
+    let refresh = false
     useEffect(()=>{
         let todoList = [] 
         data = getToDoList()
@@ -22,9 +23,15 @@ function Index() {
             })
         })
         
-    },[])
+    },[refresh])
 
-        const navigate = useNavigate();
+    const handleDel = (id)=>{
+
+        // console.log('ID TO DELETE', id);
+        // deleteItem({'id':id})
+        <ToDoDelete id={id} />
+    }
+
 
     return (
         <div className='todoListWrapper'>
@@ -52,8 +59,11 @@ function Index() {
                                     </div>
                                     <div className="todoRightButton">
                                         <button className='todoListBtn' onClick={()=>{
-                                            navigate(`/todo`)
-                                            deleteItem(current._id)
+                                            // console.log('id!!', {id: current._id});
+                                            // deleteItem({id: current._id})
+                                            // handleSubmit(current._id)
+                                            navigate(`/todo/delete/${current._id}`)
+                                            refresh = true
                                         }}>Delete</button>
                                     </div>
                                 </div>
