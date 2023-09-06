@@ -1,8 +1,9 @@
 import React, { useState,useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { newEntry, remove, findAll } from '../../utilities/calendar-service';
+import { newEntry, remove, edit, findAll } from '../../utilities/calendar-service';
 import { getUser } from '../../utilities/users-service';
+import { update } from "../../utilities/calendar-api";
 
 function DisplayCalendar() {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -58,22 +59,54 @@ function DisplayCalendar() {
         }
     };
 
-    const Update_Event_Fun = (eventId, newName) => {
+    const Update_Event_Fun = async(id,eventId, newName) => {
+
+
         const updated_Events = events.map((event) => {
+
             if (event.time === eventId) {
+                if (id===event._id){
+                    const temp = async()=>{
+                        let tempEvent={
+                            _id: event._id,
+                            name: event.name,
+                            time: event.time,
+                            title: newName,
+                            date: event.date
+                        }
+                        console.log(tempEvent);
+                        await edit(tempEvent)
+                    }
+                    temp()
+                }
                 return {
                     ...event,
                     title: newName,
                 };
             }
+
             return event;
         });
+
+        
         setEvents(updated_Events);
     };
 
-    const Delete_Event_Fun = (eventId) => {
+    const Delete_Event_Fun = (id,eventId) => {
         const updated_Events = events.filter((event) => event.time !== eventId);
         setEvents(updated_Events);
+        events.map((event) => {
+
+            if (event.time === eventId) {
+                if (id===event._id){
+                    const temp = async()=>{
+
+                        await remove({id})
+                    }
+                    temp()
+                }
+            }
+        });
     };
 
     return (
@@ -150,8 +183,9 @@ function DisplayCalendar() {
                                                     <button
                                                         className="update-btn"
                                                         onClick={() =>
+                                                            
                                                             Update_Event_Fun(
-                                                                event.time,
+                                                                event._id,event.time,
                                                                 prompt(
                                                                     "ENTER NEW TITLE",
                                                                 ),
@@ -164,7 +198,7 @@ function DisplayCalendar() {
                                                         className="delete-btn"
                                                         onClick={() =>
                                                             Delete_Event_Fun(
-                                                                event.time,
+                                                                event._id,event.time
                                                             )
                                                         }
                                                     >

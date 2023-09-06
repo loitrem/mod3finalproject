@@ -22,7 +22,10 @@ export function findAll(){
     return sendRequest.sendGetRequest(`${BASE_URL}/findall`)
 }
 
-
 export function remove(data){
     return sendRequest.sendPostRequest(`${BASE_URL}/remove`, data)
+}
+
+export function edit(data){
+    return sendRequest.sendPostRequest(`${BASE_URL}/edit`, data)
 }

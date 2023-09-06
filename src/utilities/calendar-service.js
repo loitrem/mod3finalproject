@@ -36,3 +36,8 @@ export async function remove(data){
     const entry = await calendarAPI.remove(data);
     return entry;
 }
+
+export async function edit(data){
+    const entry = await calendarAPI.edit(data);
+    return entry;
+}
