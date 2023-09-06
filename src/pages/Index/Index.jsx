@@ -1,21 +1,38 @@
 import React, {useState,useEffect} from 'react'
 import Calendar from 'react-calendar'; 
-import { findByDate, remove } from '../../utilities/calendar-service';
+import { findByDate, remove, findAll } from '../../utilities/calendar-service';
 import { getUser } from '../../utilities/users-service';
 import { useNavigate } from 'react-router-dom'
+import { differenceInCalendarDays } from 'date-fns';
+import DisplayCalendar from './DisplayCalendar';
 
 function Index() {
     const [date, setDate] = useState(new Date())
+    const [allDates, setAllDates] = useState(null)
     // const [title,setTitle]=useState('')
     // const [time,setTime]=useState('')
     // const [details,setDetals]=useState('')
     const [info,setInfo]=useState('')
     const navigate = useNavigate();
 
+
     useEffect(()=>{
         handleChange()
-    },[date])
+            let data = findAll()
+            console.log(data);
+            let calendarList=[]
+            data.then(results =>{
+                results.map((current)=>{
+                    // if (first){
+                        calendarList.push(current)
+                    setAllDates(calendarList)
+                    console.log('lldkdkkdkdd',calendarList);
+                })
+            })
 
+        
+    },[date])
+console.log('eeeeeee',allDates);
     const del = async(id)=>{
         console.log(id);
         remove({id})
@@ -27,13 +44,22 @@ function Index() {
         
     }
 
-
-
     return (
         <div>
             <h1 className="header">React Calendar</h1>
             <div className="calendar-container">
-                <Calendar onChange={setDate} value={date}/>
+                <DisplayCalendar/>
+                {/* {console.log('JDKJKJDKJDKJDKJD',tileClassName)} */}
+                {/* <Calendar onChange={setDate} value={date} tileClassName={(date)=>{
+
+                    if (allDates!=null){allDates.map((current)=>{
+                        if ((date.date.toDateString()===current.date)){
+                            console.log('MATCHED',date.date.toDateString(),'===',current.date);
+                            return 'events'
+                        }
+                    })}
+                    else return ''
+                }}/> */}
             </div>
             <div className="text-center">
                 <div className="date"><label htmlFor="">date</label>{date.toDateString()}</div>

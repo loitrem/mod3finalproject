@@ -9,5 +9,6 @@ router.post('/update', calendarCtrl.update);
 router.post('/findbydate', calendarCtrl.findByDate);
 router.post('/findbyid', calendarCtrl.findById);
 router.post('/remove', calendarCtrl.remove);
+router.get('/findall', calendarCtrl.findAll);
 
 module.exports = router;

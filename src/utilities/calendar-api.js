@@ -18,6 +18,11 @@ export function findById(data){
     return sendRequest.sendPostRequest(`${BASE_URL}/findbyid`, data)
 }
 
+export function findAll(){
+    return sendRequest.sendGetRequest(`${BASE_URL}/findall`)
+}
+
+
 export function remove(data){
     return sendRequest.sendPostRequest(`${BASE_URL}/remove`, data)
 }
