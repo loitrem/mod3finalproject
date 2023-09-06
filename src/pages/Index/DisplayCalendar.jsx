@@ -6,15 +6,15 @@ function DisplayCalendar() {
     const [selectedDate, setSelectedDate] = useState(null);
     const [eventName, setEventName] = useState("");
     const [events, setEvents] = useState([]);
-  
+
     const Date_Click_Fun = (date) => {
         setSelectedDate(date);
     };
-  
+
     const Event_Data_Update = (event) => {
         setEventName(event.target.value);
     };
-  
+
     const Create_Event_Fun = () => {
         if (selectedDate && eventName) {
             const newEvent = {
@@ -28,7 +28,7 @@ function DisplayCalendar() {
             setSelectedDate(newEvent.date);
         }
     };
-  
+
     const Update_Event_Fun = (eventId, newName) => {
         const updated_Events = events.map((event) => {
             if (event.id === eventId) {
@@ -41,15 +41,14 @@ function DisplayCalendar() {
         });
         setEvents(updated_Events);
     };
-  
+
     const Delete_Event_Fun = (eventId) => {
         const updated_Events = events.filter((event) => event.id !== eventId);
         setEvents(updated_Events);
     };
-  
+
     return (
-        <div className="app">
-            <h1> GeeksforGeeks Calendar Application </h1>
+        <>
             <div className="container">
                 <div className="calendar-container">
                     <Calendar
@@ -60,10 +59,10 @@ function DisplayCalendar() {
                             date.toDateString() === selectedDate.toDateString()
                                 ? "selected"
                                 : events.some(
-                                      (event) =>
-                                          event.date.toDateString() ===
-                                          date.toDateString(),
-                                  )
+                                    (event) =>
+                                        event.date.toDateString() ===
+                                        date.toDateString(),
+                                )
                                 ? "event-marked"
                                 : ""
                         }
@@ -149,7 +148,7 @@ function DisplayCalendar() {
                     )}{" "}
                 </div>{" "}
             </div>{" "}
-        </div>
+      </>
     );
 };
 

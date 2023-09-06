@@ -562,6 +562,9 @@ padding-right: 15px;
   align-items: center;
 }
 
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+
 .events {
   background-color: red;
 }
@@ -571,13 +574,10 @@ padding-right: 15px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 2rem;
 }
 
-.calendar-container {
-  flex: 1;
-  max-width: 500px;
-  margin-right: 2rem;
+.react-calendar__navigation__label {
+  color:#474646;
 }
 
 .event-container {
