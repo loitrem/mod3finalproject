@@ -46,7 +46,6 @@ function CalendarEdit() {
                 <form onSubmit={handleSubmit}>
                     <input type="text" name='title' defaultValue={info.title || ''} onChange={handleChange} required/>
                     <input type="time" name='time' defaultValue={info.time || ''} onChange={handleChange} required/>
-                    <textarea name="details" id="" cols="30" rows="10" defaultValue={info.details || ''} onChange={handleChange}></textarea>
                     <button>submit</button>
                 </form>
             </div>

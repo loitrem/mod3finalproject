@@ -30,7 +30,6 @@ function CalendarAdd() {
             name: user,
             title: info.title,
             time: info.time,
-            details: info.details,
             date: date.date,
         }
         console.log(data);
@@ -43,7 +42,6 @@ function CalendarAdd() {
                 <form onSubmit={handleSubmit}>
                     <input type="text" name='title' value={info.title || ''} onChange={handleChange} required/>
                     <input type="time" name='time' value={info.time || ''} onChange={handleChange} required/>
-                    <textarea name="details" id="" cols="30" rows="10" value={info.details || ''} onChange={handleChange}>{info.details || ''}</textarea>
                     <button>submit</button>
                 </form>
             </div>

@@ -7,7 +7,6 @@ const calendarSchema = new Schema(
         name: { type: String, required: true },
         title: {type: String, required: true},
         time: {type: String, required: true},
-        details: {type: String},
         date: { type: String, required: true },
     }
 );

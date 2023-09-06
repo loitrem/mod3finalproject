@@ -17,22 +17,8 @@ function Index() {
 
 
     useEffect(()=>{
-        handleChange()
-            let data = findAll()
-            console.log(data);
-            let calendarList=[]
-            data.then(results =>{
-                results.map((current)=>{
-                    // if (first){
-                        calendarList.push(current)
-                    setAllDates(calendarList)
-                    console.log('lldkdkkdkdd',calendarList);
-                })
-            })
-
-        
+        handleChange() 
     },[date])
-console.log('eeeeeee',allDates);
     const del = async(id)=>{
         console.log(id);
         remove({id})

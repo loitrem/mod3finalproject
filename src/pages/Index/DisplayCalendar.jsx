@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { findByDate, remove, findAll } from '../../utilities/calendar-service';
 
 function DisplayCalendar() {
     const [selectedDate, setSelectedDate] = useState(null);
     const [eventName, setEventName] = useState("");
     const [events, setEvents] = useState([]);
+    const [allDates, setAllDates] = useState(null)
+    let className = ""
+
+    useEffect(()=>{
+        let calendarList=[]
+        let data = findAll()
+    
+        data.then(results =>{
+            results.map((current)=>{
+                // if (first){
+                    calendarList.push(current)
+                setAllDates(calendarList)
+            })
+        })
+    },[])
 
     const Date_Click_Fun = (date) => {
         setSelectedDate(date);
@@ -51,22 +67,28 @@ function DisplayCalendar() {
         <>
             <div className="container">
                 <div className="calendar-container">
-                    <Calendar
+                    {allDates?<Calendar
                         value={selectedDate}
-                        onClickDay={Date_Click_Fun}
+                        onChange={Date_Click_Fun}
                         tileClassName={({ date }) =>
-                            selectedDate &&
-                            date.toDateString() === selectedDate.toDateString()
-                                ? "selected"
-                                : events.some(
-                                    (event) =>
-                                        event.date.toDateString() ===
-                                        date.toDateString(),
-                                )
-                                ? "event-marked"
-                                : ""
+                            // setLabel(date)
+                            allDates?allDates.map((current,i)=>{
+                                console.log('CURRENT???',events);
+                                selectedDate && date.toDateString() === selectedDate.toDateString()&&current.date===date.toDateString()
+                                    ? className="selected event-marked"
+                                    : events.some(
+                                        (event) =>
+                                            event.date.toDateString() ===
+                                            date.toDateString(),
+                                    )
+                                    ? className = "event-marked"
+                                    : className = ""
+                                    console.log('CLASSNAME!!!!!',className);
+                                    return className
+                            }): ''
+                        
                         }
-                    />{" "}
+                    />:''}{" "}
                 </div>
                 <div className="event-container">
                     {" "}
