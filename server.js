@@ -2,6 +2,7 @@ require('dotenv').config();
 require('./config/database');
 require('./controllers/api/chat');
 const express = require('express');
+const expressWs = require('express-ws')
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
