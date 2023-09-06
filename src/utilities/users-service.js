@@ -47,10 +47,9 @@ export async function login(credentials) {
     return getUser()
 }
 
-export async function checkToken() {
-    // checkToken returns a string, but let's
-    // make it a Date object for more flexibility
-    return usersAPI.checkToken().then((dateStr) => new Date(dateStr));
-  }
+export async function getAllUsers() {
+    const data = await usersAPI.getAllUsers()
+    return data;
+}
 
 

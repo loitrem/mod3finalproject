@@ -43,13 +43,18 @@ function createJWT(user) {
   );
 }
 
-function checkToken(req, res) {
-  console.log('req.user', req.user);
-  res.json(req.exp);
-}
+const getAllUsers = async (req, res) => {
+  try {
+      // Find the user by their email
+      const data = await User.find({});
+      res.status(200).json(data);
+  } catch (err) {
+      res.status(400).json({ msg: err.message, reason: 'Bad Credentials' });
+  }
+};
 
 module.exports = {
   create,
   login,
-  checkToken,
+  getAllUsers,
 };

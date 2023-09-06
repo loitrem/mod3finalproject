@@ -91,11 +91,12 @@ app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(require('./config/checkToken'));
 
-// Put API routes here, before the "catch all" route
+// Put API routes here, before the "catch all" route 
+app.use('/api/usergroups', require('./routes/api/usergroups'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/todo', require('./routes/api/todo'));
 app.use('/api/calendar', require('./routes/api/calendar'));
-app.use('/api/groups', require('./routes/api/groups'));
+
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

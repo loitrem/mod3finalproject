@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { newEntry, findByDate, remove, findAll } from '../../utilities/calendar-service';
+import { newEntry, remove, findAll } from '../../utilities/calendar-service';
 import { getUser } from '../../utilities/users-service';
 
 function DisplayCalendar() {

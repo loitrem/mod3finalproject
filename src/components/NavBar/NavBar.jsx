@@ -18,7 +18,7 @@ export default function NavBar({ user, setUser }) {
         &nbsp; | &nbsp;
         <Link to='/todo/add'>To do list add</Link>
         &nbsp; | &nbsp;
-        <Link to='/users/groups'>Groups</Link>
+        <Link to='/usergroups'>Groups</Link>
         &nbsp; | &nbsp;
         <Link to='/orders/new'>New Order</Link>
         &nbsp;&nbsp; <span>Welcome, {user?user.name:''}</span>

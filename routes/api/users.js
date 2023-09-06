@@ -11,6 +11,6 @@ router.post('/signup', usersCtrl.create);
 router.post('/login', usersCtrl.login);
 
 // GET /api/users/check-token
-router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
+router.get('/getallusers', usersCtrl.getAllUsers);
 
 module.exports = router;

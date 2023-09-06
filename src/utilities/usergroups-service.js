@@ -1,4 +1,4 @@
-import * as groupsAPI from './groups-api.js';
+import * as groupsAPI from './usergroups-api.js';
 
 export async function add(data){
     const entry = await groupsAPI.add(data);
@@ -7,5 +7,10 @@ export async function add(data){
 
 export async function remove(data){
     const entry = await groupsAPI.remove(data);
+    return entry;
+}
+
+export async function findAll(){
+    const entry = await groupsAPI.findAll();
     return entry;
 }

@@ -51,7 +51,7 @@ function App() {
             <Route path="/todo/edit/:id" element={<ToDoEdit/>}/>
             <Route path="/todo/delete/:id" element={<ToDoDelete/>}/>
             <Route path="/orders/new/" element={<NewOrderPage />}/>
-            <Route path="/users/groups" element={<UserGroups  user={user}/>}/>
+            <Route path="/usergroups" element={<UserGroups  user={user}/>}/>
           </Routes> 
         </>
         : <AuthPage setUser={setUser}/>
