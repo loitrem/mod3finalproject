@@ -859,3 +859,33 @@ padding-right: 15px;
   background-color: #000000;
   color: white;
 }
+
+.userGroupsWrapper{
+  width: 100%;
+}
+
+.userGroups {
+  width: 100%;
+  display: flex;
+}
+
+.userGroupsTitle{
+
+}
+
+.userGroupsUserCell{
+  width: 50%;
+  display: flex;
+}
+
+.userGroupsUserName{
+
+}
+
+.userGroupsUserBtn{
+
+}
+
+.userGroupsButton{
+
+}

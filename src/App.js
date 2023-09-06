@@ -8,7 +8,7 @@ import { getUser } from '../src/utilities/users-service';
 //import components
 import AuthPage from './pages/Auth/AuthPage'
 import NewOrderPage from './pages/NewOrder/NewOrderPage'
-import OrderHistoryPage from './pages/OrderHistory/OrderHistoryPage'
+import UserGroups from './pages/UserGroups/UserGroups'
 import NavBar from './components/NavBar/NavBar';
 import Index from './pages/Index/Index'
 import Chat from './pages/Chat/Chat';
@@ -51,7 +51,7 @@ function App() {
             <Route path="/todo/edit/:id" element={<ToDoEdit/>}/>
             <Route path="/todo/delete/:id" element={<ToDoDelete/>}/>
             <Route path="/orders/new/" element={<NewOrderPage />}/>
-            <Route path="/orders/history/" element={<OrderHistoryPage  user={user}/>}/>
+            <Route path="/users/groups" element={<UserGroups  user={user}/>}/>
           </Routes> 
         </>
         : <AuthPage setUser={setUser}/>
