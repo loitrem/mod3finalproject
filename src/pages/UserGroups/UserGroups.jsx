@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import * as userGroupsService from '../../utilities/userGroups-service';
+import * as userGroupsService from '../../utilities/groups-service';
 
 function UserGroups() {
 
