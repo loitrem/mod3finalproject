@@ -95,7 +95,7 @@ app.use(require('./config/checkToken'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/todo', require('./routes/api/todo'));
 app.use('/api/calendar', require('./routes/api/calendar'));
-app.use('/api/userGroups', require('./routes/api/userGroups'));
+app.use('/api/groups', require('./routes/api/groups'));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

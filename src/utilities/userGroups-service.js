@@ -1,6 +1,6 @@
-import * as userGroupsAPI from './userGroups-api.js';
+import * as userGroupsAPI from './groups-api.js';
 
-export async function newEntry(data){
-    const entry = await todoAPI.newEntry(data);
+export async function add(data){
+    const entry = await userGroupsAPI.add(data);
     return entry;
 }
