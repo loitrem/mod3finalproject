@@ -20,6 +20,7 @@ function DisplayCalendar() {
                 // if (first){
                     calendarList.push(current)
                 setAllDates(calendarList)
+                setEvents(calendarList)
             })
         })
     },[])
@@ -38,13 +39,13 @@ function DisplayCalendar() {
             const user = getUser()
             const newEvent = {
                 time: new Date().getTime(),
-                date: selectedDate,
+                date: new Date(selectedDate),
                 title: eventName,
             };
             const addEvent = {
                 name: user.name,
                 time: new Date().getTime(),
-                date: selectedDate,
+                date: new Date(selectedDate),
                 title: eventName,
             }
 
@@ -80,22 +81,23 @@ function DisplayCalendar() {
             <div className="container">
                 <div className="calendar-container">
                     {allDates?<Calendar
+                    
                         value={selectedDate}
                         onChange={Date_Click_Fun}
                         tileClassName={({ date }) =>
                             // setLabel(date)
-                            allDates?allDates.map((current,i)=>{
-                                console.log('CURRENT???',events);
-                                selectedDate && date.toDateString() === selectedDate.toDateString()&&current.date===date.toDateString()
+                            allDates?allDates.map((current)=>{
+                                // console.log('CURRENT???',events);
+                                new Date(selectedDate).toDateString() && new Date(date).toDateString() === new Date(selectedDate).toDateString()&&new Date(current.date).toDateString()===date.toDateString()
                                     ? className="selected event-marked"
                                     : events.some(
                                         (event) =>
-                                            event.date.toDateString() ===
+                                            event.date ===
                                             date.toDateString(),
                                     )
                                     ? className = "event-marked"
                                     : className = ""
-                                    console.log('CLASSNAME!!!!!',className);
+                                    // console.log('CLASSNAME!!!!!',className);
                                     return className
                             }): ''
                         
@@ -130,9 +132,11 @@ function DisplayCalendar() {
                             <h2> My Created Event List </h2>{" "}
                             <div className="event-cards">
                                 {" "}
-                                {events.map((event) =>
-                                    event.date.toDateString() ===
-                                    selectedDate.toDateString() ? (
+                                {events.map((event) => {
+                                    
+                                    return (
+                                new Date(event.date).toDateString() ===
+                                    new Date(selectedDate).toDateString() ? (
                                         <div
                                             key={event.time}
                                             className="event-card"
@@ -140,7 +144,7 @@ function DisplayCalendar() {
                                             <div className="event-card-header">
                                                 <span className="event-date">
                                                     {" "}
-                                                    {event.date.toDateString()}{" "}
+                                                    {new Date(event.date).toDateString()}{" "}
                                                 </span>{" "}
                                                 <div className="event-actions">
                                                     <button
@@ -175,14 +179,14 @@ function DisplayCalendar() {
                                                 </p>{" "}
                                             </div>{" "}
                                         </div>
-                                    ) : null,
+                                    ) : null)},
                                 )}{" "}
                             </div>{" "}
                         </div>
                     )}{" "}
                 </div>{" "}
             </div>{" "}
-      </>
+        </>
     );
 };
 

@@ -48,7 +48,7 @@ function Index() {
                 }}/> */}
             </div>
             <div className="text-center">
-                <div className="date"><label htmlFor="">date</label>{date.toDateString()}</div>
+                {/* <div className="date"><label htmlFor="">date</label>{date.toDateString()}</div>
                 <br/>
                 <button onClick={()=>{
                     navigate(`/calendar/add/${date.toDateString()}`)
@@ -71,7 +71,7 @@ function Index() {
                 }}>Delete Event</button>
                     </div>
                     )
-                }):''}
+                }):''} */}
             </div>
         </div>
     )
