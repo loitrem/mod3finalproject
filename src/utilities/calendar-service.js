@@ -11,8 +11,15 @@ export async function update(data){
 }
 
 export async function findByDate(data){
+
     const entry = await calendarAPI.findByDate(data);
     return entry;
+}
+
+export async function findByDate1(data){
+    console.log('UUUUUUHHHHHHHHH??????',data);
+    // const entry = await calendarAPI.findByDate(data);
+    // return entry;
 }
 
 export async function findById(data){

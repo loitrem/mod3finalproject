@@ -55,11 +55,25 @@ const findById = async (req, res) => {
     }
 };
 
+const remove = async (req, res) => {
+    try {
+        // Add user to database
+
+        const data = await Calendar.findByIdAndDelete(req.body.id);
+
+        res.json(data);
+    } catch (err) {
+        // Client will check for non-2xx status code
+        // 400 = Bad Request
+        res.status(400).json({ msg: err.message, reason: 'Bad Credentials' });
+    }
+};
+
 module.exports = {
     newEntry,
     update,
     findByDate,
-    findById
-    // getCalendarById,
-    // deleteItem
+    findById,
+    remove
+
 };

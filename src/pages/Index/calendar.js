@@ -160,7 +160,7 @@ function calendar() {
                         <li>Fri</li>
                         <li>Sat</li>
                     </ul>
-                    <ul className="calendar-dates">{day.map((current,i)=>{
+                    <ul className="calendar-dates">{day.map(async(current,i)=>{
                         <li key={i}>{current}</li>
                     })}</ul>
                 </div>

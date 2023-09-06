@@ -18,6 +18,7 @@ import ToDoEdit from './pages/ToDo/ToDoEdit';
 import ToDoDelete from './pages/ToDo/ToDoDelete';
 import CalendarAdd from './pages/Index/CalendarAdd';
 import CalendarEdit from './pages/Index/CalendarEdit';
+import CalendarDelete from './pages/Index/CalendarDelete';
 
 //import css
 import './App.css';
@@ -43,6 +44,7 @@ function App() {
             <Route path="/" element={<Index />}/>
             <Route path="/calendar/add/:date" element={<CalendarAdd />}/>
             <Route path="/calendar/edit/:id" element={<CalendarEdit />}/>
+            <Route path="/calendar/delete" element={<CalendarDelete />}/>
             <Route path="/todo" element={<ToDoIndex />}/>
             <Route path="/todo/add" element={<ToDoAdd />}/>
             <Route path="/chat" element={<Chat />}/>

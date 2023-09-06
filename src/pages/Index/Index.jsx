@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import Calendar from 'react-calendar'; 
-import { findByDate } from '../../utilities/calendar-service';
+import { findByDate, remove } from '../../utilities/calendar-service';
 import { getUser } from '../../utilities/users-service';
 import { useNavigate } from 'react-router-dom'
 
@@ -17,7 +17,8 @@ function Index() {
     },[date])
 
     const del = async(id)=>{
-
+        console.log(id);
+        remove({id})
     }
     const handleChange = async() =>{
 
@@ -59,8 +60,9 @@ function Index() {
                     navigate(`/calendar/edit/${current._id}`)
                 }}>Edit Event</button>
                 <button onClick={()=>{
-                    // navigate(`/calendar/delete/${current._id}`)
+                    
                     del(current._id)
+                    navigate(`/Calendar/Delete`)
                 }}>Delete Event</button>
                     </div>
                     )
