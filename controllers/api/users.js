@@ -53,8 +53,19 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+const getOne = async (req, res) => {
+  try {
+      // Find the user by their email
+      const data = await User.findById(req.body.id);
+      res.status(200).json(data);
+  } catch (err) {
+      res.status(400).json({ msg: err.message, reason: 'Bad Credentials' });
+  }
+};
+
 module.exports = {
   create,
   login,
   getAllUsers,
+  getOne
 };

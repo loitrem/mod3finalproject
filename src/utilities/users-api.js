@@ -12,3 +12,8 @@ export function login(credentials) {
 export function getAllUsers() {
     return sendRequest.sendGetRequest(`${BASE_URL}/getallusers`);
 }
+
+export function getOne(data) {
+    return sendRequest.sendPostRequest(`${BASE_URL}/getOne`, data);
+}
+

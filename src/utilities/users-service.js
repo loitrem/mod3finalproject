@@ -52,4 +52,9 @@ export async function getAllUsers() {
     return data;
 }
 
+export async function getOne(data) {
+    const entry = await usersAPI.getOne(data)
+    return entry;
+}
+
 
