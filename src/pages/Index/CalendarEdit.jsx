@@ -13,7 +13,7 @@ function CalendarEdit() {
         findById(id)
         .then(results =>{
             setInfo(results)
-            console.log('RESULTS!!!',results);
+            
                 setInfo(results);
             })
     },[])
@@ -24,9 +24,10 @@ function CalendarEdit() {
 
     const handleSubmit = async(e) => {
         const user = getUser()
-        console.log(user);
+
         e.preventDefault()
         const data = {
+            id:id.id,
             name: user.name,
             title: info.title,
             time: info.time,
@@ -34,8 +35,8 @@ function CalendarEdit() {
             date: date.toDateString(),
         }
 
-        console.log('UPDATE DATA?',data);
-        await update({id:user._id,data:data})
+
+        await update(data)
         navigate('/')
 
     }

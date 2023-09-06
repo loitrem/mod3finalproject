@@ -16,8 +16,8 @@ const newEntry = async (req, res) => {
 const update = async (req, res) => {
     try {
         // Add user to database
-        console.log('TESTTTTTT',req.body.id, req.body.data);
-        const data = await Calendar.findByIdAndUpdate(req.body.id, req.body.data);
+        console.log('TESTTTTTT',req.body.id, req.body);
+        const data = await Calendar.findByIdAndUpdate(req.body.id, req.body);
 console.log(data);
         res.json(data);
     } catch (err) {
@@ -30,7 +30,7 @@ console.log(data);
 const findByDate = async (req, res) => {
     try {
         // Add user to database
-        console.log(req.body.date);
+
         const data = await Calendar.find({date: req.body.date});
 
         res.json(data);
@@ -44,7 +44,7 @@ const findByDate = async (req, res) => {
 const findById = async (req, res) => {
     try {
         // Add user to database
-        console.log(req.body.date);
+
         const data = await Calendar.findById(req.body.id);
 
         res.json(data);

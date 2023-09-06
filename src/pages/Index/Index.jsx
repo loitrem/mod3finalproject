@@ -16,14 +16,16 @@ function Index() {
         handleChange()
     },[date])
 
+    const del = async(id)=>{
 
+    }
     const handleChange = async() =>{
 
         setInfo(await findByDate({date: date.toDateString()}))
-        // console.log('DBINFO',dbInfo);
+
         
     }
-    console.log('DBINFO222',info);
+
 
 
     return (
@@ -40,15 +42,26 @@ function Index() {
                 }}>Add Event</button>
                 <br/>
                 {info?info.map((current,i)=>{
-                    console.log('Current DB Info',current);
+                    let timeArr = current.time.split(':')
+                    let amPm="AM"
+                    if (Number(timeArr[0])>12){
+                            timeArr[0] = Number(timeArr[0])-12
+                            amPm = 'PM'
+                    }
+                    let newTime = timeArr[0]+':'+timeArr[1]+' '+amPm
+                    console.log(newTime);
                     return(
                     <div className="display" key={i}>
                     <div className="title"><label>Title: </label>{current.title}</div> <br/>
-                    <div className="time"><label>Time: </label>{current.time}</div> <br/>
-                    <div className="details"><label>Detais: </label>{current.details}</div>
+                    <div className="time"><label>Time: </label>{newTime}</div> <br/>
+                    <div className="details"><label>Details: </label>{current.details}</div>
                     <button onClick={()=>{
                     navigate(`/calendar/edit/${current._id}`)
                 }}>Edit Event</button>
+                <button onClick={()=>{
+                    // navigate(`/calendar/delete/${current._id}`)
+                    del(current._id)
+                }}>Delete Event</button>
                     </div>
                     )
                 }):''}

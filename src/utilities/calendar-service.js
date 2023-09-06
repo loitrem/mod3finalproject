@@ -19,3 +19,8 @@ export async function findById(data){
     const entry = await calendarAPI.findById(data);
     return entry;
 }
+
+export async function remove(data){
+    const entry = await calendarAPI.remove(data);
+    return entry;
+}
