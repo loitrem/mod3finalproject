@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 const calendarSchema = new Schema(
     {
         name: { type: String, required: true },
+        time: {type:Number, required: true},
         title: {type: String, required: true},
-        time: {type: String, required: true},
         date: { type: String, required: true },
     }
 );

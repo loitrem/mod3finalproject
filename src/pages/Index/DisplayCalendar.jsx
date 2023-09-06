@@ -1,7 +1,8 @@
 import React, { useState,useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { findByDate, remove, findAll } from '../../utilities/calendar-service';
+import { newEntry, findByDate, remove, findAll } from '../../utilities/calendar-service';
+import { getUser } from '../../utilities/users-service';
 
 function DisplayCalendar() {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -31,13 +32,24 @@ function DisplayCalendar() {
         setEventName(event.target.value);
     };
 
-    const Create_Event_Fun = () => {
+    const Create_Event_Fun = async() => {
+        
         if (selectedDate && eventName) {
+            const user = getUser()
             const newEvent = {
-                id: new Date().getTime(),
+                time: new Date().getTime(),
                 date: selectedDate,
                 title: eventName,
             };
+            const addEvent = {
+                name: user.name,
+                time: new Date().getTime(),
+                date: selectedDate,
+                title: eventName,
+            }
+
+            await newEntry(addEvent)
+
             setEvents([...events, newEvent]);
             setSelectedDate(null);
             setEventName("");
@@ -47,7 +59,7 @@ function DisplayCalendar() {
 
     const Update_Event_Fun = (eventId, newName) => {
         const updated_Events = events.map((event) => {
-            if (event.id === eventId) {
+            if (event.time === eventId) {
                 return {
                     ...event,
                     title: newName,
@@ -59,7 +71,7 @@ function DisplayCalendar() {
     };
 
     const Delete_Event_Fun = (eventId) => {
-        const updated_Events = events.filter((event) => event.id !== eventId);
+        const updated_Events = events.filter((event) => event.time !== eventId);
         setEvents(updated_Events);
     };
 
@@ -122,7 +134,7 @@ function DisplayCalendar() {
                                     event.date.toDateString() ===
                                     selectedDate.toDateString() ? (
                                         <div
-                                            key={event.id}
+                                            key={event.time}
                                             className="event-card"
                                         >
                                             <div className="event-card-header">
@@ -135,7 +147,7 @@ function DisplayCalendar() {
                                                         className="update-btn"
                                                         onClick={() =>
                                                             Update_Event_Fun(
-                                                                event.id,
+                                                                event.time,
                                                                 prompt(
                                                                     "ENTER NEW TITLE",
                                                                 ),
@@ -148,7 +160,7 @@ function DisplayCalendar() {
                                                         className="delete-btn"
                                                         onClick={() =>
                                                             Delete_Event_Fun(
-                                                                event.id,
+                                                                event.time,
                                                             )
                                                         }
                                                     >

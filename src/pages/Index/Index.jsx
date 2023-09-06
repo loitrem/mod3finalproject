@@ -55,18 +55,11 @@ function Index() {
                 }}>Add Event</button>
                 <br/>
                 {info?info.map((current,i)=>{
-                    let timeArr = current.time.split(':')
-                    let amPm="AM"
-                    if (Number(timeArr[0])>12){
-                            timeArr[0] = Number(timeArr[0])-12
-                            amPm = 'PM'
-                    }
-                    let newTime = timeArr[0]+':'+timeArr[1]+' '+amPm
-                    console.log(newTime);
+
+
                     return(
                     <div className="display" key={i}>
                     <div className="title"><label>Title: </label>{current.title}</div> <br/>
-                    <div className="time"><label>Time: </label>{newTime}</div> <br/>
                     <div className="details"><label>Details: </label>{current.details}</div>
                     <button onClick={()=>{
                     navigate(`/calendar/edit/${current._id}`)
