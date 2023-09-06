@@ -1,10 +1,22 @@
-import React, {useState} from 'react'
-import { update } from '../../utilities/calendar-service';
+import React, {useState, useEffect} from 'react'
+import { findById, update } from '../../utilities/calendar-service';
 import { getUser } from '../../utilities/users-service';
+import { useNavigate, useParams   } from 'react-router-dom'
 
 function CalendarEdit() {
     const [date, setDate] = useState(new Date())
     const [info,setInfo]=useState('')
+    const id = useParams()
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        findById(id)
+        .then(results =>{
+            setInfo(results)
+            console.log('RESULTS!!!',results);
+                setInfo(results);
+            })
+    },[])
 
     const handleChange = (e) =>{
         setInfo({...info, [e.target.name]: e.target.value})
@@ -15,14 +27,16 @@ function CalendarEdit() {
         console.log(user);
         e.preventDefault()
         const data = {
-            name: user,
+            name: user.name,
             title: info.title,
             time: info.time,
             details: info.details,
             date: date.toDateString(),
         }
-        console.log(data);
-        await update(data)
+
+        console.log('UPDATE DATA?',data);
+        await update({id:user._id,data:data})
+        navigate('/')
 
     }
     return (
@@ -31,7 +45,7 @@ function CalendarEdit() {
                 <form onSubmit={handleSubmit}>
                     <input type="text" name='title' defaultValue={info.title || ''} onChange={handleChange} required/>
                     <input type="time" name='time' defaultValue={info.time || ''} onChange={handleChange} required/>
-                    <textarea name="details" id="" cols="30" rows="10" defaultValue={info.details || ''} onChange={handleChange}>{info.details || ''}</textarea>
+                    <textarea name="details" id="" cols="30" rows="10" defaultValue={info.details || ''} onChange={handleChange}></textarea>
                     <button>submit</button>
                 </form>
             </div>

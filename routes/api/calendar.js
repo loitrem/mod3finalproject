@@ -7,5 +7,6 @@ const calendarCtrl = require('../../controllers/api/calendar');
 router.post('/newentry', calendarCtrl.newEntry);
 router.post('/update', calendarCtrl.update);
 router.post('/findbydate', calendarCtrl.findByDate);
+router.post('/findbyid', calendarCtrl.findById);
 
 module.exports = router;

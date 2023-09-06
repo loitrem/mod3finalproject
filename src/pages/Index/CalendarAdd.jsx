@@ -9,7 +9,7 @@ function CalendarAdd() {
     const [info,setInfo]=useState('')
     const navigate = useNavigate();
     
-        const newDate = useParams()
+    const newDate = useParams()
 
     const handleChange = (e) =>{
         setInfo({...info, [e.target.name]: e.target.value})

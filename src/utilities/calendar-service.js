@@ -14,3 +14,8 @@ export async function findByDate(data){
     const entry = await calendarAPI.findByDate(data);
     return entry;
 }
+
+export async function findById(data){
+    const entry = await calendarAPI.findById(data);
+    return entry;
+}

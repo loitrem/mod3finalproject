@@ -13,3 +13,7 @@ export function update(data){
 export function findByDate(data){
     return sendRequest.sendPostRequest(`${BASE_URL}/findbydate`, data)
 }
+
+export function findById(data){
+    return sendRequest.sendPostRequest(`${BASE_URL}/findbyid`, data)
+}
