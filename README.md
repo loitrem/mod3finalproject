@@ -4,7 +4,7 @@
 
 A digital planner to help you remember things.
 
-![Alt text](src/images/screenshot.jpg)
+![Alt text](src/images/screenshot1.jpg)
 
 
 ## Environment Variables
