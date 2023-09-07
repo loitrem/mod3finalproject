@@ -50,6 +50,7 @@ To run this project, you will need to add the following environment variables to
 
 ## Future Enhancements
 
+- Reactive scaling
 - Add Shoping List
 - Add User Groups
 - Add Admin Panel
