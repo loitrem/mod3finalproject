@@ -4,6 +4,8 @@
 
 A digital planner to help you remember things.
 
+![Alt text](src/images/screenshot.jpg)
+
 
 ## Environment Variables
 
@@ -32,3 +34,24 @@ To run this project, you will need to add the following environment variables to
 
 ![Alt text](./src/images/wireframe.jpg)
 
+## Technologies Used
+
+- ReactJs
+- Javascript
+- NodeJs
+- ExpressJs
+- MongoDb
+- React Calendar
+- Dotenv
+- Bcrypt
+- Json web tokens
+- HTML
+- CSS
+
+## Future Enhancements
+
+- Add Shoping List
+- Add User Groups
+- Add Admin Panel
+- Add Chat (between family members most likely)
+- Add message board (same as above)
