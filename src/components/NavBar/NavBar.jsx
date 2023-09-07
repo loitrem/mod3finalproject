@@ -10,17 +10,14 @@ export default function NavBar({ user, setUser }) {
     }
 
     return (
-        <nav><Link to='/'>Home</Link>
-        &nbsp; | &nbsp;
-        <Link to='/todo'>To do list</Link>
-        &nbsp; | &nbsp;
-        <Link to='/todo/add'>To do list add</Link>
-
-        &nbsp;&nbsp; <span>Welcome, {user?user.name:''}</span>
-        &nbsp;&nbsp;
-        <Link to='' onClick={handleLogOut}>
-            Log Out
-        </Link>
+        <nav className='navbar'>
+            <div className="navbarInner">
+                &nbsp;&nbsp; <span className='welcomeUser'>Welcome, {user?user.name:''}</span>
+                &nbsp;&nbsp;
+                <Link to='' className='logout' onClick={handleLogOut}>
+                    Log Out
+                </Link>
+            </div>
         </nav>
     );
 }

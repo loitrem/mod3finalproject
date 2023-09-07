@@ -1,43 +1,47 @@
 import React, {useState, useEffect, useContext}from 'react'
 import {getToDoList, deleteItem} from '../../utilities/todo-service'
-import { useNavigate, useParams  } from 'react-router-dom'
-import ToDoDelete from './ToDoDelete'
-
+import { useNavigate, useParams, useLocation } from 'react-router-dom'
+import ToDoEdit from './ToDoEdit'
+import ToDoAdd from './ToDoAdd'
+import * as todoService from '../../utilities/todo-service';
 
 function Index() {
 
     const[todo,setToDo]=useState([])
     const navigate = useNavigate();
     let data = null
-    let refresh = false
+    const location = useLocation();
+
+
     useEffect(()=>{
         let todoList = [] 
         data = getToDoList()
-        console.log('CHECK ME', data);
-        // setToDo(data)
         data.then(results =>{
             results.map((current)=>{
-                // if (first){
                 todoList.push(current)
                 setToDo(todoList.slice(0,todoList.length).reverse())
                 console.log('do i ever go');
             })
         })
         
-    },[refresh])
+    },[])
 
-    const handleDel = (id)=>{
+    const handleDel = async(e)=>{
 
-        // console.log('ID TO DELETE', id);
-        // deleteItem({'id':id})
-        <ToDoDelete id={id} />
+        await todoService.deleteItem({id: e.target.id.value})
+        console.log(e.target.id.value);
     }
-
 
     return (
         <div className='todoListWrapper'>
             <h1>To Do List</h1>
+            <div className="todoAdd">
+                <ToDoAdd/>
+            </div>
+            
+            <br/>
             <div className="todoList">
+                
                 {todo?todo.map((current, i)=>{
                     // console.log('CURRENT DATE TEST', new Date(Date.parse(current.date)).toDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}));
                     return (
@@ -53,20 +57,17 @@ function Index() {
                                 </div>
                                 <div className="todoListButton">
                                     <div className="todoLeftButton">
+                                    <form className='todoBtnForm'>
                                         <button className='todoListBtn' onClick={()=>{
-                                            
-                                            // handleSubmit(current._id)
                                             navigate(`/todo/edit/${current._id}`)
                                         }}>Edit</button>
+                                        </form>
                                     </div>
                                     <div className="todoRightButton">
-                                        <button className='todoListBtn' onClick={()=>{
-                                            // console.log('id!!', {id: current._id});
-                                            // deleteItem({id: current._id})
-                                            // handleSubmit(current._id)
-                                            navigate(`/todo/delete/${current._id}`)
-                                            refresh = true
-                                        }}>Delete</button>
+                                        <form className='todoBtnForm' onSubmit={handleDel}>
+                                            <input name='id' type="hidden" value={current._id}/>
+                                            <button className='todoListBtn'>Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

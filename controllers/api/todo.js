@@ -54,7 +54,6 @@ const deleteItem = async (req, res) => {
     try {
         console.log('before data',req.body.id);
         await ToDo.findByIdAndDelete(req.body.id);
-        console.log(await ToDo.find({}));
     } catch (err) {
         // Client will check for non-2xx status code
         // 400 = Bad Request

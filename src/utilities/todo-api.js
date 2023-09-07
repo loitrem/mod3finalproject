@@ -20,6 +20,6 @@ export function getToDoById(id){
 }
 
 export function deleteItem(id){
-    console.log('API page');
+    console.log('API page',id);
     return sendRequest.sendPostRequest(`${BASE_URL}/remove`, id)
 }

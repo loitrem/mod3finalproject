@@ -58,7 +58,7 @@ console.log('ID IS = ', id);
         } catch (err){
             console.log(err);
         }
-        navigate('/todo')
+        navigate('/')
     }
 
     return (

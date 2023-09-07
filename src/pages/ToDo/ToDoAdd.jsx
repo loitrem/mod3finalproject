@@ -22,7 +22,7 @@ function ToDoAdd() {
         const currentDate = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) ; 
         console.log(currentDate);
         // Prevent form from being submitted to the server
-        e.preventDefault();
+        // e.preventDefault();
 
         try{ 
             const token = getToken();
@@ -36,7 +36,7 @@ function ToDoAdd() {
         } catch (err){
             console.log(err);
         }
-        navigate('/todo')
+        // navigate('/todo')
     }
 
     return (
@@ -60,7 +60,7 @@ function ToDoAdd() {
                         value={todo.details || ''}
                         onChange={handleChange}
                     />
-                    <button className='todoSubmit' type='submit'>Submit</button>
+                    <button className='todoSubmit' type='submit'>Add</button>
                 </form>
             </div>
         </div>
