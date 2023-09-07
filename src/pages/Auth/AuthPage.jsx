@@ -9,7 +9,12 @@ function AuthPage({setUser}) {
 
   return (
     <div>
-      <h1>AuthPage</h1>
+      <br/>
+      <br/>
+      <div className='homeText'>Welcome, Please login or Register</div>
+      
+      <br/>
+      <br/>
       <button onClick={()=>{setShowLogin(!showLogin)}}>
         {showLogin? 'Sign Up':'Login'}
       </button>

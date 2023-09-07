@@ -14,9 +14,7 @@ export default function NavBar({ user, setUser }) {
             <div className="navbarInner">
                 &nbsp;&nbsp; <span className='welcomeUser'>Welcome, {user?user.name:''}</span>
                 &nbsp;&nbsp;
-                <Link to='' className='logout' onClick={handleLogOut}>
-                    Log Out
-                </Link>
+                <button className='logout' onClick={handleLogOut}>Logout</button>
             </div>
         </nav>
     );

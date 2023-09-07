@@ -83,13 +83,16 @@ code {
 
 .form-container {
   padding: 3vmin;
-  background-color: var(--tan-1);
-  border: .1vmin solid var(--tan-3);
+  background-color: #FCFDF2;
+  border: 1px solid #3B3486;
   border-radius: 1vmin;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 p.error-message {
-  color: var(--orange);
+  color: #FFE9B1;
   text-align: center;
 }
 
@@ -123,13 +126,28 @@ input:focus {
 button, a.button {
   margin: 1vmin;
   padding: 1vmin;
-  color: var(--white);
-  background-color: var(--orange);
+  color: #FFE9B1;
+  background-color: #3B3486;
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  border: .1vmin solid var(--tan-2);
+  border: 2px solid #FFE9B1;
+  border-radius: .5vmin;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover, a.button {
+  margin: 1vmin;
+  padding: 1vmin;
+  color: #3B3486;
+  background-color: #FFE9B1;
+  font-size: 2vmin;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border: 2px solid #3B3486;
   border-radius: .5vmin;
   outline: none;
   cursor: pointer;
@@ -145,10 +163,6 @@ button.btn-xs {
   padding: .4vmin .5vmin;
 }
 
-/* button:disabled, form:invalid button[type="submit"] {
-  cursor: not-allowed;
-  background-color: var(--tan-4);
-} */
 
 button[type="submit"] {
   grid-column: span 2;
@@ -654,7 +668,6 @@ button[type="submit"] {
 
 .main{
   width: 55%;
-  min-height: 90vh;
   margin-left: auto;
   margin-right: auto;
   background-color: #FCFDF2;
@@ -674,13 +687,12 @@ button[type="submit"] {
 }
 
 .todo {
- margin-top: 35px;
+  margin-top: 35px;
 }
 
 
 .todoListWrapper {
   width: 100%;
-  min-height: 99vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -893,7 +905,6 @@ color: #3B3486;
   }
 
   .navbar{
-    background-color: white;
     margin-top: 25px;
     margin-bottom: 25px;
   }
@@ -904,7 +915,7 @@ color: #3B3486;
     margin-left: auto;
     margin-right: auto;
     padding-right: 50px;
-    font-size: 0px;
+    font-size: 24px;
     font-weight: bold;
     color: #FFE9B1;
   }
@@ -915,13 +926,24 @@ color: #3B3486;
     border: 2px solid #FFE9B1;
     color: #FFE9B1;
     padding: 3px;
-    font-size: 24px;
-    
-    border-radius: 10px;
+    font-size: 20px;
+    font-weight: normal;
+    border-radius: 5px;
   }
 
   
   .logout:hover{
-    background-color: #3B3486;
+    background-color: #FFE9B1;
+    border: 2px solid #3B3486;
+    color: #3B3486;
   }
 
+  .welcomeUser{
+    color: #FFE9B1;
+  }
+
+.homeText{
+  font-size: 38px;
+  font-weight: bold;
+  color: #FFE9B1;
+}
