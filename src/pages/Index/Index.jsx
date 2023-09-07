@@ -23,7 +23,7 @@ function Index() {
                     </div>
                     <div className="right">
                         <div className="mainTitle">What Was I doing Again?!</div>
-                    <   div className="secondTitle">DIGITAL PANNER</div>
+                        <div className="secondTitle">DIGITAL PANNER</div>
                     </div>
                     
                 </div>
